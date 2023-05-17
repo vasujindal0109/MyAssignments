@@ -1,0 +1,26 @@
+#Write a singleton class. Confirm that singleton class cannot be inherited.
+
+class SingletonInheritanceCheck {
+    private static SingletonInheritanceCheck instance;
+    private SingletonInheritanceCheck() {
+    }
+    public static SingletonInheritanceCheck getInstance() {
+        if (instance == null) {
+            instance = new SingletonInheritanceCheck();
+        }
+        return instance;
+    }
+}
+
+public class Assignment2Q1 {
+    public static void main(String[] args) {
+        SingletonInheritanceCheck instance1 = SingletonInheritanceCheck.getInstance();
+        SingletonInheritanceCheck instance2 = SingletonInheritanceCheck.getInstance();
+
+        if (instance1 == instance2) {
+            System.out.println("Only one instance of SingletonInheritanceCheck exists.");
+        } else {
+            System.out.println("Multiple instances of SingletonInheritanceCheck exist.");
+        }
+    }
+}
