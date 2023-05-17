@@ -1,0 +1,44 @@
+# find out all the armstrong numbers lies between 100-999
+
+class ArmstrongNumBetweenRange {
+    public int[] armstrongNumbersInRange(int min, int max) {
+        int count = 0;
+        for (int i = min; i <= max; i++) {
+            if (isArmstrongNumber(i)) {
+                count++;
+            }
+        }
+        int[] armstrongNumbers = new int[count];
+        int index = 0;
+        for (int i = min; i <= max; i++) {
+            if (isArmstrongNumber(i)) {
+                armstrongNumbers[index] = i;
+                index++;
+            }
+        }
+        return armstrongNumbers;
+    }
+    private boolean isArmstrongNumber(int num) {
+        int originalNum = num;
+        int sum = 0;
+        while (num != 0) {
+            int digit = num % 10;
+            sum += Math.pow(digit, 3);
+            num /= 10;
+        }
+        return sum == originalNum;
+    }
+}
+
+public class Assignment1Q2 {
+    public static void main(String[] args) {
+        int min = 100;
+        int max = 999;
+        ArmstrongNumBetweenRange armstrongNumFinder = new ArmstrongNumBetweenRange();
+        int[] armstrongNumbers = armstrongNumFinder.armstrongNumbersInRange(min, max);
+        for (int number : armstrongNumbers) {
+            System.out.print(number + " ");
+        }
+    }
+}
+
