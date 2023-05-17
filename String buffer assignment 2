@@ -1,0 +1,13 @@
+# reverse the string
+public class StringBufferReverse {
+    public static void main(String[] args) {
+        String originalString = "This method returns the reversed object on which it was called";
+
+        StringBuffer stringBuffer = new StringBuffer(originalString);
+        stringBuffer.reverse();
+
+        String reversedString = stringBuffer.toString();
+
+        System.out.println("Reversed string: " + reversedString);
+    }
+}
