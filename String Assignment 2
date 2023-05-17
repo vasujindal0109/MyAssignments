@@ -1,0 +1,12 @@
+#join two stringd
+
+public class StringJoin {
+    public static void main(String[] args) {
+        String str1 = "Hello, ";
+        String str2 = "How are you?";
+
+        String joinedString = str1.concat(str2);
+
+        System.out.println("Joined string: " + joinedString);
+    }
+}
