@@ -1,0 +1,41 @@
+#Supply marks of three subject and declare the result, result declaration is based on below conditions
+
+import java.util.Scanner;
+class ResultDeclaration {
+    public String declareResults(double subject1Marks, double subject2Marks, double subject3Marks) {
+        if (subject1Marks > 60 && subject2Marks > 60 && subject3Marks > 60) {
+            return "Passed";
+        } 
+        else if ((subject1Marks > 60 && subject2Marks > 60) ||
+                   (subject2Marks > 60 && subject3Marks > 60) ||
+                   (subject1Marks > 60 && subject3Marks > 60)) {
+            return "Promoted";
+        } 
+        else if (subject1Marks > 60 || subject2Marks > 60 || subject3Marks > 60) {
+            return "Passed";
+        }
+        else {
+            return "Failed";
+        }
+    }
+}
+public class Assignment1Q4 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the marks for subject 1: ");
+        double subject1Marks = scanner.nextDouble();
+
+        System.out.print("Enter the marks for subject 2: ");
+        double subject2Marks = scanner.nextDouble();
+
+        System.out.print("Enter the marks for subject 3: ");
+        double subject3Marks = scanner.nextDouble();
+
+        ResultDeclaration resultDeclaration = new ResultDeclaration();
+        String result = resultDeclaration.declareResults(subject1Marks, subject2Marks, subject3Marks);
+
+        System.out.println("Result: " + result);
+    }
+}
+
