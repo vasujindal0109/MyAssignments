@@ -1,0 +1,29 @@
+# income tax calculator
+
+import java.util.Scanner;
+class TaxAmount {
+    public double calculateTaxAmount(int ctc) {
+        if (ctc <= 180000) {
+            return 0;
+        } else if (ctc <= 300000) {
+            return (ctc - 180000) * 0.1;
+        } else if (ctc <= 500000) {
+            return (ctc - 300000) * 0.2 + 12000;
+        } else if (ctc <= 1000000) {
+            return (ctc - 500000) * 0.3 + 72000;
+        } else {
+            return 0;
+        }
+    }
+}
+
+public class Assignment1Q5 {
+    public static void main(String args[]) {
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Enter the ctc");
+    int ctc = sc.nextInt();
+    TaxAmount taxCalculator = new TaxAmount();
+    double taxAmount = taxCalculator.calculateTaxAmount(ctc);
+    System.out.println("Tax Amount: " + taxAmount);
+    }
+}
