@@ -1,0 +1,16 @@
+# String buffer in a peer class
+
+public class StringBufferAppend {
+    public static void main(String[] args) {
+        StringBuffer stringBuffer = new StringBuffer();
+
+        stringBuffer.append("StringBuffer");
+        stringBuffer.append(" is a peer class of String");
+        stringBuffer.append(" that provides much of ");
+        stringBuffer.append("the functionality of strings");
+
+        String appendedString = stringBuffer.toString();
+
+        System.out.println("Appended string: " + appendedString);
+    }
+}
