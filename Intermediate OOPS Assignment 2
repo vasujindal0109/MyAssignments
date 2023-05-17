@@ -1,0 +1,62 @@
+#Calculate total salaries given to the employees
+
+import java.util.ArrayList;
+
+class Employee {
+    protected int salary;
+
+    public Employee() {
+        this.salary = 10000;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+}
+
+class Manager extends Employee {
+    private int incentive;
+
+    public Manager() {
+        this.incentive = 5000;
+    }
+
+    @Override
+    public int getSalary() {
+        return super.getSalary() + incentive;
+    }
+}
+
+class Labour extends Employee {
+    private int overtime;
+
+    public Labour() {
+        this.overtime = 500;
+    }
+
+    @Override
+    public int getSalary() {
+        return super.getSalary() + overtime;
+    }
+}
+
+public class Assignment2Q2 {
+    public int totalEmployeesSalary(ArrayList<Employee> employees) {
+        int totalSalary = 0;
+        for (Employee employee : employees) {
+            totalSalary += employee.getSalary();
+        }
+        return totalSalary;
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Employee> employees = new ArrayList<>();
+        employees.add(new Manager());
+        employees.add(new Labour());
+
+        Assignment2Q2 organization = new Assignment2Q2();
+        int totalSalary = organization.totalEmployeesSalary(employees);
+
+        System.out.println("Total Salary: " + totalSalary);
+    }
+}
