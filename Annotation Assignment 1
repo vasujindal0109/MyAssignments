@@ -1,0 +1,25 @@
+#Annotation @Test
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface Test {
+}
+
+
+#Class ExampleTest
+public class ExampleTest {
+    @Test
+    public void testMethod() {
+        // Test case implementation
+    }
+
+    // This will result in a compilation error since static methods cannot be annotated with @Test
+    @Test
+    public static void staticTestMethod() {
+        // Test case implementation
+    }
+}
