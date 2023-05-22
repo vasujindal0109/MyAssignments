@@ -10,8 +10,19 @@ class Product {
         this.id = id;
         this.name = name;
     }
+    public int getId() {
+        return id;
+    }
+    public String getName() {
+        return name;
+    }
 
-    @Override
+    public String toString() {
+        return "ID: " + id + ", Name: " + name;
+    }
+    public int hashCode() {
+        return id;
+    }
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -22,41 +33,38 @@ class Product {
         Product other = (Product) obj;
         return id == other.id;
     }
-
-    @Override
-    public int hashCode() {
-        return Integer.hashCode(id);
-    }
 }
 
-public class UniqueProducts {
+public class UniqueProductExample {
     public static void main(String[] args) {
-        HashSet<Product> productSet = new HashSet<>();
+        HashSet<Product> products = new HashSet<>();
 
-        Product prod1 = new Product(1, "Product 1");
-        Product prod2 = new Product(2, "Product 2");
-        Product prod3 = new Product(3, "Product 3");
-        Product prod4 = new Product(4, "Product 4");
-        Product prod5 = new Product(5, "Product 5");
-        Product prod6 = new Product(1, "Product 1"); 
-        Product prod7 = new Product(6, "Product 6");
-        Product prod8 = new Product(7, "Product 7");
-        Product prod9 = new Product(8, "Product 8");
-        Product prod10 = new Product(9, "Product 9");
+        Product product1 = new Product(101, "Keyboard");
+        Product product2 = new Product(102, "Mouse");
+        Product product3 = new Product(103, "Monitor");
+        Product product4 = new Product(104, "Speakers");
+        Product product5 = new Product(105, "Headphones");
+        Product product6 = new Product(106, "Printer");
+        Product product7 = new Product(107, "Scanner");
+        Product product8 = new Product(108, "Laptop");
+        Product product9 = new Product(109, "Tablet");
+        Product product10 = new Product(110, "Smartphone");
 
-        productSet.add(prod1);
-        productSet.add(prod2);
-        productSet.add(prod3);
-        productSet.add(prod4);
-        productSet.add(prod5);
-        productSet.add(prod6); 
-        productSet.add(prod7);
-        productSet.add(prod8);
-        productSet.add(prod9);
-        productSet.add(prod10);
+        products.add(product1);
+        products.add(product2);
+        products.add(product3);
+        products.add(product4);
+        products.add(product5);
+        products.add(product6);
+        products.add(product7);
+        products.add(product8);
+        products.add(product9);
+        products.add(product10);
 
-        for (Product product : productSet) {
-            System.out.println("ID: " + product.getId() + ", Name: " + product.getName());
+        Product duplicateProduct = new Product(102, "Mouses");
+        products.add(duplicateProduct);
+        for (Product product : products) {
+            System.out.println(product);
         }
     }
 }
