@@ -1,0 +1,84 @@
+#Collection Assignment 2
+
+import java.util.Map;
+import java.util.TreeMap;
+
+enum Gender {
+    MALE,
+    FEMALE,
+    OTHER
+}
+
+class Contact {
+    private long phoneNumber;
+    private String name;
+    private String email;
+    private Gender gender;
+
+    public Contact(long phoneNumber, String name, String email, Gender gender) {
+        this.phoneNumber = phoneNumber;
+        this.name = name;
+        this.email = email;
+        this.gender = gender;
+    }
+
+    public long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void displayDetails() {
+        System.out.println("Phone Number: " + phoneNumber);
+        System.out.println("Name: " + name);
+        System.out.println("Email: " + email);
+        System.out.println("Gender: " + gender);
+    }
+}
+
+public class Mains{
+    public static void main(String[] args) {
+        TreeMap<Long, Contact> contacts = new TreeMap<>(java.util.Collections.reverseOrder());
+
+        // Adding contacts to the TreeMap
+        contacts.put(1234567890L, new Contact(1234567890L, "John Doe", "john@example.com", Gender.MALE));
+        contacts.put(9876543210L, new Contact(9876543210L, "Jane Smith", "jane@example.com", Gender.FEMALE));
+        contacts.put(5555555555L, new Contact(5555555555L, "Mike Johnson", "mike@example.com", Gender.MALE));
+
+        // Fetching and printing keys
+        System.out.println("Phone Numbers:");
+        for (long phoneNumber : contacts.keySet()) {
+            System.out.println(phoneNumber);
+        }
+        System.out.println();
+
+        // Fetching and printing values
+        System.out.println("Contact Details:");
+        for (Contact contact : contacts.values()) {
+            contact.displayDetails();
+            System.out.println();
+        }
+        System.out.println();
+
+        // Printing all key-value pairs
+        System.out.println("Key-Value Pairs:");
+        for (Map.Entry<Long, Contact> entry : contacts.entrySet()) {
+            long phoneNumber = entry.getKey();
+            Contact contact = entry.getValue();
+
+            System.out.println("Phone Number: " + phoneNumber);
+            contact.displayDetails();
+            System.out.println();
+        }
+    }
+}
