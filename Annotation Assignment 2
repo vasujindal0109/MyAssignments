@@ -1,0 +1,31 @@
+#Annotation Info
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+public @interface Info {
+    String authorId();
+    String author() default "";
+    String supervisor() default "";
+    String date();
+    String time();
+    int version();
+    String description() default "";
+}
+
+
+#class ExampleClass
+@Info(authorId = "12345", date = "2023-05-22", time = "09:00", version = 1, description = "Sample class")
+public class ExampleClass {
+
+    @Info(authorId = "12345", date = "2023-05-22", time = "10:30", version = 1, description = "Sample property")
+    private String exampleProperty;
+
+    @Info(authorId = "12345", date = "2023-05-22", time = "11:45", version = 1, description = "Sample method")
+    public void exampleMethod() {
+        // Method implementation
+    }
+}
