@@ -1,0 +1,56 @@
+#Basic Arithmetic Operation
+
+@FunctionalInterface
+interface ArithmeticOperation {
+    double performOperation(int num1, int num2);
+}
+
+public class Assignment4Q1 {
+    public double addition(int num1, int num2) {
+        ArithmeticOperation addition = (a, b) -> a + b;
+        return addition.performOperation(num1, num2);
+    }
+
+    public double subtraction(int num1, int num2) {
+        ArithmeticOperation subtraction = (a, b) -> a - b;
+        return subtraction.performOperation(num1, num2);
+    }
+
+    public double multiplication(int num1, int num2) {
+        ArithmeticOperation multiplication = (a, b) -> a * b;
+        return multiplication.performOperation(num1, num2);
+    }
+
+    public double division(int num1, int num2) {
+        ArithmeticOperation division = (a, b) -> {
+            if (b == 0) {
+                throw new ArithmeticException("Cannot divide by zero");
+            }
+            return (double) a / b;
+        };
+        return division.performOperation(num1, num2);
+    }
+
+    public static void main(String[] args) {
+        Assignment4Q1 arithmetic = new Assignment4Q1();
+
+        int num1 = 13;
+        int num2 = 5;
+
+        double additionResult = arithmetic.addition(num1, num2);
+        System.out.println("Addition: " + additionResult);
+
+        double subtractionResult = arithmetic.subtraction(num1, num2);
+        System.out.println("Subtraction: " + subtractionResult);
+
+        double multiplicationResult = arithmetic.multiplication(num1, num2);
+        System.out.println("Multiplication: " + multiplicationResult);
+
+        try {
+            double divisionResult = arithmetic.division(num1, num2);
+            System.out.println("Division: " + divisionResult);
+        } catch (ArithmeticException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
